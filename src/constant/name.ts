@@ -1,0 +1,1 @@
+export const ANOYMOUS = '__anoymous__'

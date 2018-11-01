@@ -9,7 +9,8 @@
       "request": "launch",
       "name": "Launch Program",
       "args": [
-        "src/__test__/index.spec.ts",
+        // "src/__test__/index.spec.ts",
+        "node_modules/jasmine/bin/jasmine",
       ],
       "runtimeArgs": ["-r", "ts-node/register"],
       "cwd": "${workspaceRoot}",

@@ -1,5 +1,6 @@
 import * as FS from "fs-extra"
 import { cloneDeep } from "lodash"
+import { ANOYMOUS } from "./constant/name"
 
 export default function( data, output ) {
   let codes = []
@@ -23,11 +24,11 @@ export default function( data, output ) {
 
   function recurToAddCode( data ) {
     let { name, children, id } = data
-    name = name.trim() === '' ? '__Empty__' : name
+    name = name.trim() === '' ? ANOYMOUS : name
 
     children.map( item => {
       let { name: subName, id: subId } = item
-      subName = subName.trim() === '' ? '__Empty__' : subName
+      subName = subName.trim() === '' ? ANOYMOUS : subName
       const formated = formatCode( `${ id }(${ name })`, `${ subId }(${ subName })` )
       codes.push( formated )
     } )
@@ -36,8 +37,8 @@ export default function( data, output ) {
   }
 
   function formatCode( a, b ) {
-    a = a.trim() === '' ? '__Empty__' : a
-    b = b.trim() === '' ? '__Empty__' : b
+    a = a.trim() === '' ? ANOYMOUS : a
+    b = b.trim() === '' ? ANOYMOUS : b
     return `${ a }-->${ b }`
   }
 
