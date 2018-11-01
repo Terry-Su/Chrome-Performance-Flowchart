@@ -1,24 +1,16 @@
 {
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "commonJS",
-		"target": "es5",
-		"jsx": "react",
+    "target": "es5",
+    "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "lib": [ "es2016" ],
-    "typeRoots": [
-      "src/__typings__/**/*",
-      "node_modules/@types/**/*",
-    ],
-    "types": [
-      "node",
-      "jasmine"
-    ]
+    "lib": ["es2016"],
+    "typeRoots": ["src/__typings__/**/*", "node_modules/@types/**/*"],
+    "types": ["node", "jasmine", "mermaid"]
   }
 }
