@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+    <script src="../build//bundle.js"></script>
+    <title>Document</title>
+    <style>
+      html,
+      body,
+      #container {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="file"
+      name="upload"
+      id="uploadButton"
+      onchange="onFileInputChange( callback )"
+    />
+    <div id="container"></div>
+
+    <script>
+      const uploadButton = document.getElementById("uploadButton");
+      function onFileInputChange(callback) {
+        try {
+          const reader = new FileReader();
+          function onReaderLoad(event) {
+            uploadButton.value = "";
+            callback(event.target.result);
+          }
+          reader.onload = onReaderLoad;
+          reader.readAsText(event.target.files[0]);
+        } catch (e) {}
+      }
+
+      function transfrom( text ) {
+        const profileJson = JSON.parse( text )
+        const basic = getBasic( profileJson, 'Vue' )
+        return getFlowchartCodes( basic )
+      }
+
+      function callback(text) {
+        const codes = transfrom( text )
+        const container = document.getElementById("container");
+        container.innerHTML = `graph TB
+${codes}
+  `;
+        mermaid.init(container);
+        uploadButton.remove()
+      }
+
+    </script>
+  </body>
+</html>

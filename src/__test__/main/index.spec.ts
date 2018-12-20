@@ -1,28 +1,29 @@
 import * as FS from "fs-extra"
 import * as PATH from "path"
-import build, { getIDTree, getMostBottomRightIDTreeAsSameLevel } from "../../"
-import generateFlowchartCodes from "../../generateFlowchartCodes"
 import { MOCK_NODES_FOR_ID_TREE } from "../__constant__/mock"
 import IDTree, { createIDTree } from "../../IdTree"
+import buildBasic from "../../buildBasic"
+import { getMostBottomRightIDTreeAsSameLevel, getIDTree } from "../../getBasic"
+
 
 const from = PATH.resolve( __dirname, "profile.json" )
-const to = PATH.resolve( __dirname, "output/result.json" )
+const to = PATH.resolve( __dirname, "output/basic.json" )
 
 describe( "main", () => {
-  it( "build", () => {
+  it( "build basic", () => {
     // const building = false
     const building = true
     if ( building ) {
-      build( from, to, "legacyRenderSubtreeIntoContainer" )
+      buildBasic( from, to, "Vue" )
 
-      const data = FS.readJSONSync( to )
+      // const data = FS.readJSONSync( to )
 
-      const flowchartCodesOutput = PATH.resolve(
-        __dirname,
-        "output/flowchartCodes.txt"
-      )
+      // const flowchartCodesOutput = PATH.resolve(
+      //   __dirname,
+      //   "output/flowchartCodes.txt"
+      // )
 
-      const flowchartCodes = generateFlowchartCodes( data, flowchartCodesOutput )
+      // const flowchartCodes = getFlowchartCodes( data, flowchartCodesOutput )
     }
   } )
 

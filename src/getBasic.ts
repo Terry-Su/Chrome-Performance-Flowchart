@@ -1,17 +1,16 @@
-import * as FS from "fs-extra"
-import { flatten, findIndex, cloneDeep } from "lodash"
+import flatten from 'lodash/flatten'
+import findIndex from 'lodash/findIndex'
+import cloneDeep from 'lodash/cloneDeep'
 import IDTree, { createIDTree } from "./IdTree"
 import Chain from "./Chain"
 import IDTreeStructure, { createIDTreeStructure } from "./IDTreeStructure"
 
-export default function build(
-  from: string,
-  to: string,
+export default function (
+  profileJson: any, 
   rootFunctionName: string
 ) {
-  const json = FS.readJSONSync( from )
 
-  const filtered = json.filter( hasScriptId ).map( getNodes )
+  const filtered = profileJson.filter( hasScriptId ).map( getNodes )
   const allNodes = flatten( filtered )
 
   const node = getNodeByFunctionName( rootFunctionName, allNodes )
@@ -21,7 +20,7 @@ export default function build(
 
   const tree = getJSONTree( isTreeJSON, allNodes )
 
-  FS.outputJsonSync( to, tree )
+  return tree
 
   function hasScriptId( item ) {
     try {
