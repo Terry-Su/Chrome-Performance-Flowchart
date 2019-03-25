@@ -10,6 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "lib": ["es2016"],
     "typeRoots": ["src/__typings__/**/*", "node_modules/@types/**/*"],
-    "types": ["node", "jasmine", "mermaid"]
+    "types": ["node", "jasmine", "mermaid"],
+    "esModuleInterop": true
   }
 }

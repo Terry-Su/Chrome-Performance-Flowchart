@@ -1,12 +1,12 @@
 {
-  "name": "Performance-Flowchart",
-  "version": "1.0.0",
+  "name": "performance-flowchart",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "ts-node node_modules/jasmine/bin/jasmine",
     "build": "webpack",
-    "server": "browser-sync start --server --port 6064 --watch web**/* --directory --startPath web**/*/index.html --no-open"
+    "server": "browser-sync start --server --port 6064 --watch web**/* --directory --startPath web/index.html --no-open"
   },
   "repository": {
     "type": "git",

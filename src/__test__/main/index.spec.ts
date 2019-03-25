@@ -14,7 +14,8 @@ describe( "main", () => {
     // const building = false
     const building = true
     if ( building ) {
-      buildBasic( from, to, "Vue" )
+      buildBasic( from, to, "render" )
+      // buildBasic( from, to, "Vue" )
 
       // const data = FS.readJSONSync( to )
 
